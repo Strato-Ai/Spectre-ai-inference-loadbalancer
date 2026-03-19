@@ -1,6 +1,6 @@
 # Spectre
 
-NGINX-based load balancer for LM Studio AI backends with model-aware routing, GPU health monitoring, and multi-platform support.
+NGINX-based load balancer for compute offload to multiple AI backends with model-aware routing, GPU health monitoring, and multi-platform support.
 
 ## Architecture
 
