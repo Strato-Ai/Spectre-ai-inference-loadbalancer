@@ -1,0 +1,16 @@
+# Generic inference engine service (llmster or Ollama)
+[Unit]
+Description=Spectre Inference Engine
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=exec
+EnvironmentFile=/etc/spectre/inference.env
+ExecStart=/opt/spectre/scripts/start-inference.sh
+Restart=on-failure
+RestartSec=30s
+TimeoutStartSec=600
+
+[Install]
+WantedBy=multi-user.target

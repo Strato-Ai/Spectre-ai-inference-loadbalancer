@@ -1,0 +1,20 @@
+[Unit]
+Description=Spectre GPU Monitor Agent
+After=spectre-inference.service
+Wants=spectre-inference.service
+
+[Service]
+Type=exec
+User=spectre
+Group=spectre
+WorkingDirectory=/opt/spectre/gpu-monitor
+EnvironmentFile=-/etc/spectre/gpu-monitor.env
+ExecStartPre=/opt/spectre/scripts/wait-for-inference.sh
+ExecStart=/opt/spectre/venv/bin/uvicorn gpu_monitor_agent:app \
+    --host 0.0.0.0 --port 9090 \
+    --workers 1 --log-level info
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

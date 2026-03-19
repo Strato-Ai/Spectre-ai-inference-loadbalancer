@@ -1,0 +1,22 @@
+[Unit]
+Description=Spectre Sidecar (health monitor + routing)
+After=network-online.target
+Wants=network-online.target
+Before=spectre-nginx.service
+
+[Service]
+Type=exec
+User=spectre
+Group=spectre
+WorkingDirectory=/opt/spectre/sidecar
+EnvironmentFile=/etc/spectre/sidecar.env
+ExecStart=/opt/spectre/venv/bin/uvicorn sidecar_service:app \
+    --host 127.0.0.1 --port 8080 \
+    --workers 1 --timeout-keep-alive 65 --log-level info
+Restart=on-failure
+RestartSec=5s
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Install]
+WantedBy=spectre.target

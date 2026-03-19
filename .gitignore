@@ -1,0 +1,40 @@
+# Secrets and credentials
+*.pem
+*.key
+api_keys.json
+connection-info.txt
+.env
+.env.*
+!.env.example
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+!terraform/terraform.tfvars.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project-specific exclusions
+docs/*.docx
+prompts/
+*.zip

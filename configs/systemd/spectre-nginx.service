@@ -1,0 +1,5 @@
+# Drop-in override to add ordering after sidecar/auth
+# Install as /etc/systemd/system/nginx.service.d/spectre.conf
+[Unit]
+After=spectre-sidecar.service spectre-auth.service
+Wants=spectre-sidecar.service spectre-auth.service

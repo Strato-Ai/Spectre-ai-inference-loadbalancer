@@ -1,0 +1,4 @@
+# terraform/terraform.tfvars
+# Change instance_tier to "cpu" or "gpu" for real inference workloads
+instance_tier = "testing"
+client_count  = 2
